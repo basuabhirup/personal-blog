@@ -6,10 +6,19 @@
 
 <% if (posts.length !== 0) { %>
   <% posts.forEach(post => { %>
+    <% let url = `/posts/${post.url}`; %>
 
     <h1><%= post.title %></h1>
-    <p><%= post.content %></p>
 
+    <% if (post.content.length <=100) { %>
+
+      <p><%= post.content + " " %><a href=<%= url %>>View as a Page</a></p>
+
+    <% } else { %>
+
+      <p><%= post.content.substring(0,100) + "..." %><a href=<%= url %>>Read More</a></p>
+
+    <% } %>
   <% })  %>
 <% } %>
 

@@ -19,7 +19,7 @@ const posts = [];
 app.get("/", (req, res) => {
   res.render('home', {
     homeStarting: homeStartingContent,
-    posts: posts
+    posts: posts,
   });
 })
 
@@ -49,7 +49,8 @@ app.get('/posts/:title', (req, res) => {
 app.post("/compose", (req, res) => {
   const newPost = {
     title: req.body.title,
-    content: req.body.content
+    content: req.body.content,
+    url: _.kebabCase(req.body.title)
   }
   posts.push(newPost);
   res.redirect("/");
